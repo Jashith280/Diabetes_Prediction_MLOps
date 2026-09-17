@@ -68,5 +68,4 @@ with mlflow.start_run():
 
 # Save model locally
 joblib.dump(model, "../models/diabetes_model.pkl")
-
 print("\nModel saved successfully!")

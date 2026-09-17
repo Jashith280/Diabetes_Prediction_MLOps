@@ -4,3 +4,6 @@ __pycache__/
 *.pyc
 mlflow.db
 mlruns/
+.evidently_env/
+dvc_storage/
+data/processed/live_predictions.csv
