@@ -1,8 +1,11 @@
 import pandas as pd
+from pathlib import Path
 from sklearn.model_selection import train_test_split
 
 # Load dataset
-file_path = "../data/raw/diabetes.csv"
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+file_path = BASE_DIR / "data" / "raw" / "diabetes.csv"
 df = pd.read_csv(file_path)
 
 # Separate input features and target
@@ -25,15 +28,15 @@ print("Testing rows:", len(X_test))
 print("Number of features:", X.shape[1])
 
 # Create processed data folder
-import os
+# Create processed data folder
+processed_dir = BASE_DIR / "data" / "processed"
 
-os.makedirs("../data/processed", exist_ok=True)
+processed_dir.mkdir(parents=True, exist_ok=True)
 
-# Save processed datasets
-X_train.to_csv("../data/processed/X_train.csv", index=False)
-X_test.to_csv("../data/processed/X_test.csv", index=False)
-y_train.to_csv("../data/processed/y_train.csv", index=False)
+processed_dir.mkdir(parents=True, exist_ok=True)
 
-y_test.to_csv("../data/processed/y_test.csv", index=False)
-
+X_train.to_csv(processed_dir / "X_train.csv", index=False)
+X_test.to_csv(processed_dir / "X_test.csv", index=False)
+y_train.to_csv(processed_dir / "y_train.csv", index=False)
+y_test.to_csv(processed_dir / "y_test.csv", index=False)
 print("\nProcessed datasets saved successfully!")

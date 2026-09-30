@@ -7,3 +7,5 @@ mlruns/
 .evidently_env/
 dvc_storage/
 data/processed/live_predictions.csv
+data/processed/*.csv
+models/diabetes_model.pkl
